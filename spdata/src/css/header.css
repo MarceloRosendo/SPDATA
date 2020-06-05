@@ -1,0 +1,9 @@
+.bg-gradient {
+    background: linear-gradient(145deg, #1565c0 11%, #80cbc4 75%);
+    transition: 1s;
+}
+
+.reverse-bg-gradient {
+    background: linear-gradient(145deg, #00B8B4 11%, #00619D 75%);
+    transition: 1s;
+}
