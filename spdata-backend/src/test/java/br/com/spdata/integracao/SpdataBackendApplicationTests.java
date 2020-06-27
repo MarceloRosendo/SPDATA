@@ -1,10 +1,10 @@
-package com.algaworks.osworks;
+package br.com.spdata.integracao;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TesteApplicationTests {
+class SpdataBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
