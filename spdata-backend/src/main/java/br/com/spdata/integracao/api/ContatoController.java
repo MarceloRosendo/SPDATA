@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.spdata.integracao.entity.Contato;
 import br.com.spdata.integracao.repository.ContatoRepository;
 import br.com.spdata.integracao.representationmodel.ContatoRepresentationModel;
+import br.com.spdata.integracao.service.CadastroCliente;
 
 
 @RestController
@@ -19,6 +22,9 @@ public class ContatoController {
 	
 	@Autowired
 	ContatoRepository contatoRepository;
+	
+	@Autowired
+	CadastroCliente cadastroCliente;
 	
 	@GetMapping("/listarTodos")
 	public List<ContatoRepresentationModel>listarTodosContatos(){
@@ -46,6 +52,14 @@ public class ContatoController {
 		}
 				
 		return listaContatosRm;		
+	}
+	
+	
+	@PostMapping("/criarContato")
+	public String criarContato(@RequestBody ContatoRepresentationModel contato){	
+		
+	   return cadastroCliente.salvar(contato);		
+				
 	}
 
 }
