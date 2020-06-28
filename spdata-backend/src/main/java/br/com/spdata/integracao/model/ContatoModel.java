@@ -1,18 +1,37 @@
-package br.com.spdata.integracao.representationmodel;
+package br.com.spdata.integracao.model;
 
 import java.time.LocalDateTime;
 
-public class ContatoRepresentationModel {
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public class ContatoModel {
 
 	private int id;	
+	@NotBlank
+	@Size(max = 80)
 	private String nome;
+	@Email
+	@NotBlank
+	@Size(max = 80)
 	private String email;
+	@NotBlank
+	@Size(max = 11)
 	private String telefone;
+	@NotBlank
+	@Size(max = 100)
 	private String nomeEmpresa;
+	@NotBlank
+	@Size(max = 100)
 	private String cargo;
+	@NotBlank
+	@Size(max = 255)
 	private String endereco;
+	@Size(max = 100)
 	private String estado;
 	private LocalDateTime datahora;
+	@NotBlank
 	private String mensagem;
 	
 	public int getId() {

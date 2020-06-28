@@ -1,18 +1,24 @@
 package br.com.spdata.integracao.api;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.spdata.integracao.entity.Contato;
+import br.com.spdata.integracao.model.ContatoModel;
 import br.com.spdata.integracao.repository.ContatoRepository;
-import br.com.spdata.integracao.representationmodel.ContatoRepresentationModel;
 import br.com.spdata.integracao.service.CadastroCliente;
 
 
@@ -26,27 +32,18 @@ public class ContatoController {
 	@Autowired
 	CadastroCliente cadastroCliente;
 	
+	@Autowired
+	ModelMapper modelMapper;
+	
 	@GetMapping("/listarTodos")
-	public List<ContatoRepresentationModel>listarTodosContatos(){
+	public List<ContatoModel>listarTodosContatos(){
 		
 		List<Contato> listaContatos = contatoRepository.findAll();
-		List<ContatoRepresentationModel>listaContatosRm = new ArrayList<ContatoRepresentationModel>();
+		List<ContatoModel>listaContatosRm = new ArrayList<ContatoModel>();
 		
 		for(int i = 0; i< listaContatos.size(); i++) {
 			
-			ContatoRepresentationModel crm = new ContatoRepresentationModel();
-			
-			crm.setId(listaContatos.get(i).getId());
-			crm.setNome(listaContatos.get(i).getNome());
-			crm.setEmail(listaContatos.get(i).getEmail());
-			crm.setTelefone(listaContatos.get(i).getTelefone());
-			crm.setNomeEmpresa(listaContatos.get(i).getNomeEmpresa());
-			crm.setCargo(listaContatos.get(i).getCargo());
-			crm.setEndereco(listaContatos.get(i).getEndereco());
-			crm.setEstado(listaContatos.get(i).getEstado());
-			crm.setDatahora(listaContatos.get(i).getDatahora());
-			crm.setMensagem(listaContatos.get(i).getMensagem());
-			
+			ContatoModel crm = modelMapper.map(listaContatos.get(i), ContatoModel.class);					
 			listaContatosRm.add(crm);
 			
 		}
@@ -56,8 +53,10 @@ public class ContatoController {
 	
 	
 	@PostMapping("/criarContato")
-	public String criarContato(@RequestBody ContatoRepresentationModel contato){	
+	@ResponseStatus(HttpStatus.CREATED)
+	public String criarContato(@Valid @RequestBody ContatoModel contato){	
 		
+	   contato.setDatahora(LocalDateTime.now());
 	   return cadastroCliente.salvar(contato);		
 				
 	}
