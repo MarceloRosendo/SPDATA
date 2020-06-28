@@ -1,6 +1,6 @@
 package br.com.spdata.integracao.api;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class ContatoController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public String criarContato(@Valid @RequestBody ContatoModel contato){	
 		
-	   contato.setDatahora(LocalDateTime.now());
+	   contato.setDatahora(OffsetDateTime.now());
 	   return cadastroCliente.salvar(contato);		
 				
 	}

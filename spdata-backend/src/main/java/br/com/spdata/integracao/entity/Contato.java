@@ -1,6 +1,6 @@
 package br.com.spdata.integracao.entity;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class Contato {
 	private String endereco;
 	private String estado;
 	@Column(name = "data_hora")
-	private LocalDateTime datahora;
+	private OffsetDateTime datahora;
 	private String mensagem;
 	
 	public int getId() {
@@ -76,10 +76,10 @@ public class Contato {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public LocalDateTime getDatahora() {
+	public OffsetDateTime getDatahora() {
 		return datahora;
 	}
-	public void setDatahora(LocalDateTime datahora) {
+	public void setDatahora(OffsetDateTime datahora) {
 		this.datahora = datahora;
 	}
 	public String getMensagem() {

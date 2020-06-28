@@ -1,6 +1,6 @@
 package br.com.spdata.integracao.model;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -30,7 +30,7 @@ public class ContatoModel {
 	private String endereco;
 	@Size(max = 100)
 	private String estado;
-	private LocalDateTime datahora;
+	private OffsetDateTime datahora;
 	@NotBlank
 	private String mensagem;
 	
@@ -82,10 +82,10 @@ public class ContatoModel {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public LocalDateTime getDatahora() {
+	public OffsetDateTime getDatahora() {
 		return datahora;
 	}
-	public void setDatahora(LocalDateTime datahora) {
+	public void setDatahora(OffsetDateTime datahora) {
 		this.datahora = datahora;
 	}
 	public String getMensagem() {
