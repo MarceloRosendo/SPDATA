@@ -20,10 +20,19 @@ public class CadastroCliente {
 	public String salvar(ContatoModel contato) {
 				
 		Contato cont = modelMapper.map(contato, Contato.class);		
-		Contato crm = contatoRepository.save(cont);
+		contatoRepository.save(cont);
 
-		return "O código do cliente cadastrado é : " + String.valueOf(crm.getId()) ;
+		return "O código do cliente cadastrado é : " + String.valueOf(cont.getId()) ;
 		
+	}
+	
+	
+	public String deletar(ContatoModel contato) {
+		
+		Contato cont = modelMapper.map(contato, Contato.class);
+		contatoRepository.delete(cont);
+		
+		return "O contato de Id número: "+String.valueOf(cont.getId())+" foi removido!";
 	}
 	
 }
