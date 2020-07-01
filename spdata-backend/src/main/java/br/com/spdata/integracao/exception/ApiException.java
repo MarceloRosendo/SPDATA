@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -40,4 +41,16 @@ public class ApiException extends ResponseEntityExceptionHandler{
 		return super.handleExceptionInternal(ex, retornoException, headers, status, request);
 	}
 	
+	@Override
+	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		
+		RetornoException retornoException = new RetornoException();
+		retornoException.setStatus(status.value());
+		retornoException.setMensagem("Um ou mais campos da mensagem não está legível. Verifique");
+		retornoException.setDataHoraErro(OffsetDateTime.now());
+				
+		return super.handleExceptionInternal(ex, retornoException, headers, status, request);
+	}
+
 }

@@ -35,4 +35,16 @@ public class CadastroCliente {
 		return "O contato de Id número: "+String.valueOf(cont.getId())+" foi removido!";
 	}
 	
+	
+	public String atualizar(ContatoModel contato) {
+		
+		Contato cont = modelMapper.map(contato, Contato.class);		
+		contatoRepository.save(cont);
+
+		return "O código do cliente atualizado é : " + String.valueOf(cont.getId()) ;
+		
+	}
+		
+	
+	
 }
