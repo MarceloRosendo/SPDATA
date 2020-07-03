@@ -53,7 +53,7 @@
 
 .my-card {
     width: 100%;
-    max-width: 350px;
+    max-width: 36vw;
 }
 
 .content-2 {
@@ -65,4 +65,19 @@
     margin: 8px 0px;
     padding: 5vw;
     border-radius: 25px;
+}
+
+.thirdy-view {
+    padding: 0px 22vw;
+}
+
+.carousel-card {}
+
+/* override */
+.fit {
+    justify-content: space-around !important;
+}
+
+.footer {
+    background: #164071;
 }

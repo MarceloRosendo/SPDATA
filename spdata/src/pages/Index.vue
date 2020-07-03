@@ -11,7 +11,7 @@
     <div class="content">
       <div class="primary-view">
         <q-card class="my-card-1">
-          <q-parallax src="https://cdn.quasar.dev/img/parallax1.jpg" :height="150" />
+          <q-parallax src="~assets/gente-estrangeira-feliz.jpg" :height="150" />
 
           <q-card-section>
             <div class="text-h6">Soluções práticas e personalizadas</div>
@@ -21,7 +21,7 @@
 
         <div class="right-content">
           <q-card class="my-card-2">
-            <q-parallax src="https://cdn.quasar.dev/img/parallax1.jpg" :height="150" />
+            <q-parallax src="~assets/gente-estrangeira-feliz-2.png" :height="150" />
 
             <q-card-section>
               <div class="text-h6 justify-end">Uma marca que tem muito de você</div>
@@ -48,56 +48,112 @@
       </div>
 
       <div class="thirdy-view">
-        <q-table
-          grid
-          :card-container-class="cardContainerClass"
-          title="Treats"
-          :data="data"
-          :columns="columns"
-          row-key="name"
-          hide-header
+        <q-carousel
+          v-model="slide"
+          transition-prev="slide-right"
+          transition-next="slide-left"
+          swipeable
+          animated
+          control-color="primary"
+          navigation
+          padding
+          arrows
+          height="300px"
+          class="bg-grey-1 shadow-2 rounded-borders"
         >
-          <template v-slot:item="props">
-            <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
-              <q-card>
-                <q-card-section class="text-center">
-                  <strong>{{ props.row.name }}</strong>
+          <q-carousel-slide :name="1" class="column no-wrap">
+            <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+              <q-card class="carousel-card">
+                <img src="~assets/sgh.jpeg" />
+
+                <q-card-section>
+                  <div class="text-h6">SGH</div>
+                  <div class="text-subtitle2">Sistema de Gestão Hospitalar</div>
                 </q-card-section>
-                <q-separator />
-                <q-card-section
-                  class="flex flex-center"
-                  :style="{ fontSize: props.row.calories + 'px' }"
-                >
-                  <div>{{ props.row.calories }} g</div>
+
+                <q-card-section class="q-pt-none">Saiba mais</q-card-section>
+              </q-card>
+              <q-card class="carousel-card">
+                <img src="~assets/sgo.jpeg" />
+
+                <q-card-section>
+                  <div class="text-h6">SGO</div>
+                  <div class="text-subtitle2">Sistema de Gestão de Operadoras de Saúde</div>
                 </q-card-section>
+
+                <q-card-section class="q-pt-none">Saiba mais</q-card-section>
               </q-card>
             </div>
-          </template>
-        </q-table>
+          </q-carousel-slide>
+          <q-carousel-slide :name="2" class="column no-wrap">
+            <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+              <q-card class="carousel-card">
+                <img src="~assets/sgsp.jpeg" />
+
+                <q-card-section>
+                  <div class="text-h6">SGSP</div>
+                  <div class="text-subtitle2">Sistema de Gestão de Saúde Pública</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">Saiba mais</q-card-section>
+              </q-card>
+              <q-card class="carousel-card">
+                <img src="~assets/pep.jpeg" />
+
+                <q-card-section>
+                  <div class="text-h6">PEP</div>
+                  <div class="text-subtitle2">Prontuário Eletrônico do Paciente</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">Saiba mais</q-card-section>
+              </q-card>
+            </div>
+          </q-carousel-slide>
+          <q-carousel-slide :name="3" class="column no-wrap">
+            <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+              <q-card class="carousel-card">
+                <img src="~assets/sgh-intelligence.jpeg" />
+
+                <q-card-section>
+                  <div class="text-h6">SGH-Intelligence</div>
+                  <div class="text-subtitle2">Sistema de Gestão Hospitalar - BI</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">Saiba mais</q-card-section>
+              </q-card>
+              <q-card class="carousel-card">
+                <img src="~assets/sgh-suprimentos.jpeg" />
+
+                <q-card-section>
+                  <div class="text-h6">SGH-Suprimentos</div>
+                  <div class="text-subtitle2">Sistema de Gestão Hospitalar - Suprimentos</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">Saiba mais</q-card-section>
+              </q-card>
+            </div>
+          </q-carousel-slide>
+        </q-carousel>
       </div>
+
+      PARALLAX COM OS CASES EM CARDS, NÃO USAR CAROUSEL
+      FOOTER
     </div>
   </q-page>
 </template>
 
 <script>
-const deserts = [
-  "SGH",
-  "SGO",
-  "SGSP",
-  "PEP",
-  "SGH-Intelligence",
-  "SGH-Suprimentos"
-];
+window.onscroll = function() {
+  scrollFunction();
+};
 
-const data = []
-
-deserts.forEach(name => {
-  for (let i = 0; i < 24; i++) {
-    data.push({ name: name + ' (' + i + ')', calories: 20 + Math.ceil(50 * Math.random()) })
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("header").style.height = "8vh";
+  } else {
+    document.getElementById("header").style.height = "14vh";
   }
-})
-
-data.sort(() => (-1 + Math.floor(3 * Math.random())))
+}
 
 export default {
   name: "PageIndex",
@@ -106,50 +162,43 @@ export default {
       visible: false,
       content_2_text_body:
         "Com soluções modularizadas e adaptáveis, a SPDATA possui sistemas capazes de se adequar perfeitamente aos diversos modelos de gestão e porte da instituição de saúde.",
-        filter: '',
-        pagination: {
-        page: 1,
-        rowsPerPage: this.getItemsPerPage()
-      },
-      columns: [
-        { name: 'name', label: 'Name', field: 'name' },
-        { name: 'calories', label: 'Calories (g)', field: 'calories' }
-      ],
-      data
+      slide: 1
     };
   },
   computed: {
-    cardContainerClass () {
+    cardContainerClass() {
       if (this.$q.screen.gt.xs) {
-        return 'grid-masonry grid-masonry--' + (this.$q.screen.gt.sm ? '3' : '2')
+        return (
+          "grid-masonry grid-masonry--" + (this.$q.screen.gt.sm ? "3" : "2")
+        );
       }
 
-      return void 0
+      return void 0;
     },
 
-    rowsPerPageOptions () {
+    rowsPerPageOptions() {
       if (this.$q.screen.gt.xs) {
-        return this.$q.screen.gt.sm ? [ 3, 6, 9 ] : [ 3, 6 ]
+        return this.$q.screen.gt.sm ? [3, 6, 9] : [3, 6];
       }
 
-      return [ 3 ]
+      return [3];
     }
   },
   watch: {
-    '$q.screen.name' () {
-      this.pagination.rowsPerPage = this.getItemsPerPage()
+    "$q.screen.name"() {
+      this.pagination.rowsPerPage = this.getItemsPerPage();
     }
   },
-   methods: {
-    getItemsPerPage () {
-      const { screen } = this.$q
+  methods: {
+    getItemsPerPage() {
+      const { screen } = this.$q;
       if (screen.lt.sm) {
-        return 3
+        return 3;
       }
       if (screen.lt.md) {
-        return 6
+        return 6;
       }
-      return 9
+      return 9;
     }
   }
 };

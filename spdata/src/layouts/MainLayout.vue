@@ -1,8 +1,8 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="bg-gradient" elevated>
+    <q-header id="header" class="bg-gradient" elevated>
       <q-toolbar>
-        <div class="logo-2-basis">
+        <div id="logo" class="logo-2-basis">
           <img src="~assets/logo2.png" alt="logotipo spdata" />
         </div>
 
@@ -35,10 +35,8 @@ export default {
       leftDrawerOpen: false
     };
   },
-  methods:{
-    redirect(page){
-
-    }
+  methods: {
+    redirect(page) {}
   }
 };
 </script>
