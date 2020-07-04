@@ -14,6 +14,7 @@ public class Assunto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 	private String descricao;
+	private String ativo;
 	
 	public int getId() {
 		return id;
@@ -26,6 +27,13 @@ public class Assunto {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	public String getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(String ativo) {
+		this.ativo = ativo;
 	}	
+
 
 }

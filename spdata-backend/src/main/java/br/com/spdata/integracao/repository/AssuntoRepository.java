@@ -8,4 +8,5 @@ import br.com.spdata.integracao.entity.Assunto;
 @Repository
 public interface AssuntoRepository extends JpaRepository<Assunto, Integer> {
 
+
 }

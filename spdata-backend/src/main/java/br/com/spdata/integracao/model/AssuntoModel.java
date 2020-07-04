@@ -9,6 +9,16 @@ public class AssuntoModel {
 	@NotBlank
 	@Size(max = 80)
 	private String descricao;
+	
+	@Size(max = 2)
+	private String ativo;
+	
+	public String getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(String ativo) {
+		this.ativo = ativo;
+	}
 	public int getId() {
 		return id;
 	}

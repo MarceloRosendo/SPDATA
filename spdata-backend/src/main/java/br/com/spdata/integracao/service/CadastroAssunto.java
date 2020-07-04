@@ -8,7 +8,6 @@ import br.com.spdata.integracao.entity.Assunto;
 import br.com.spdata.integracao.model.AssuntoModel;
 import br.com.spdata.integracao.repository.AssuntoRepository;
 
-
 @Service
 public class CadastroAssunto {
 	
@@ -20,12 +19,26 @@ public class CadastroAssunto {
 	
 	public String salvar(AssuntoModel assunto){
 		
-		Assunto assuntoN = modelMapper.map(assunto, Assunto.class);
-		Assunto assuntoF = assuntoRepository.save(assuntoN);
+		Assunto assunt = modelMapper.map(assunto, Assunto.class);
+		assuntoRepository.save(assunt);
 		
-		return "Assunto " + String.valueOf(assuntoF.getDescricao()) + " - " +  String.valueOf(assuntoF.getId()) + " registrado com sucesso";
-		
+		return "Assunto " + String.valueOf(assunt.getDescricao()) + " - " +  String.valueOf(assunt.getId()) + " registrado com sucesso!";		
 		
 	}
+	
+	public String deletar(AssuntoModel assunto) {
+		
+		Assunto assunt = modelMapper.map(assunto, Assunto.class);
+		assuntoRepository.delete(assunt);
+		
+		return "Assunto "+ String.valueOf(assunt.getDescricao()) + "- ID: " + String.valueOf(assunt.getId())+ " foi removido!";
+	}
 
+	public String atualizar(AssuntoModel assunto) {
+		
+		Assunto assunt = modelMapper.map(assunto, Assunto.class);
+		assuntoRepository.save(assunt);
+		
+		return "Assunto "+ String.valueOf(assunt.getDescricao()) + "- ID: " + String.valueOf(assunt.getId())+ " atualizado!";
+	}
 }
