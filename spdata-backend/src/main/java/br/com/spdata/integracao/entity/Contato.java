@@ -1,12 +1,16 @@
 package br.com.spdata.integracao.entity;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +31,10 @@ public class Contato {
 	@Column(name = "data_hora")
 	private OffsetDateTime datahora;
 	private String mensagem;
+	
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "id_contato",insertable = false, updatable = false)
+	private List<ContatoAssunto> listaAssuntos;
 	
 	public int getId() {
 		return id;
@@ -87,6 +95,12 @@ public class Contato {
 	}
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+	public List<ContatoAssunto> getListaAssuntos() {
+		return listaAssuntos;
+	}
+	public void setListaAssuntos(List<ContatoAssunto> listaAssuntos) {
+		this.listaAssuntos = listaAssuntos;
 	}			
 	
 }

@@ -1,10 +1,13 @@
 package br.com.spdata.integracao.model;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import br.com.spdata.integracao.entity.ContatoAssunto;
 
 public class ContatoModel {
 
@@ -33,6 +36,8 @@ public class ContatoModel {
 	private OffsetDateTime datahora;
 	@NotBlank
 	private String mensagem;
+	
+	private List<ContatoAssunto> listaAssuntos;
 	
 	public int getId() {
 		return id;
@@ -93,6 +98,12 @@ public class ContatoModel {
 	}
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+	public List<ContatoAssunto> getListaAssuntos() {
+		return listaAssuntos;
+	}
+	public void setListaAssuntos(List<ContatoAssunto> listaAssuntos) {
+		this.listaAssuntos = listaAssuntos;
 	}			
 	
 }

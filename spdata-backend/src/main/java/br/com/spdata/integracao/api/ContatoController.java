@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.spdata.integracao.entity.Contato;
 import br.com.spdata.integracao.model.ContatoModel;
 import br.com.spdata.integracao.repository.ContatoRepository;
-import br.com.spdata.integracao.service.CadastroCliente;
+import br.com.spdata.integracao.service.CadastroContato;
 
 
 @RestController
@@ -34,7 +34,7 @@ public class ContatoController {
 	ContatoRepository contatoRepository;
 	
 	@Autowired
-	CadastroCliente cadastroCliente;
+	CadastroContato cadastroContato;
 	
 	@Autowired
 	ModelMapper modelMapper;
@@ -79,15 +79,20 @@ public class ContatoController {
 	public String criarContato(@Valid @RequestBody ContatoModel contato){	
 		
 	   contato.setDatahora(OffsetDateTime.now());
-	   return cadastroCliente.salvar(contato);		
+	   return cadastroContato.salvar(contato);		
 				
 	}
 	
 	
 	@DeleteMapping("/excluirContato")
 	public String excluirContato(@RequestBody ContatoModel contato) {
-						
-		return cadastroCliente.deletar(contato); 		
+		
+		Optional<Contato> optContato =  contatoRepository.findById(contato.getId());
+		
+		if (optContato.isPresent())			
+		  return cadastroContato.deletar(contato); 
+		else
+		  return "Contato não existe na base de dados. Verifique!";			
 	}
 	
 	
@@ -97,7 +102,7 @@ public class ContatoController {
 		Optional<Contato> optContato =  contatoRepository.findById(contato.getId());
 		
 		if (optContato.isPresent())			
-		  return cadastroCliente.atualizar(contato);
+		  return cadastroContato.atualizar(contato);
 		else
 		  return "Contato não existe na base de dados. Verifique!";
 	}
