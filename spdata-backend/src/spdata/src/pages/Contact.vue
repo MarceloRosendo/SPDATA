@@ -18,7 +18,7 @@
             filled
             v-model="email"
             label="Email"
-            hint="Exemplo: darth@vader.com.br"
+            hint="Exemplo: luke@skywalker.com.br"
             lazy-rules
             :rules="[ val => val && val.length > 0 || 'Por favor, preencha com seu email']"
           />
@@ -57,14 +57,33 @@
         <q-input
           filled
           class="row item"
-          v-model="empresa"
+          v-model="cargo"
           label="Cargo"
           hint="O cargo que você ocupa, ex: enfermeiro"
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Por favor, preencha com seu cargo']"
         />
       </div>
-      <q-select class="row item" filled v-model="assunto" :options="options" label="Assunto" />
+      <div class="flex item-container">
+        <q-input
+          filled
+          class="row item"
+          v-model="endereco"
+          label="Endereço"
+          hint="Seu endereço, ex: Rua Vasco da Gama, nº 178"
+          lazy-rules
+          :rules="[ val => val && val.length > 0 || 'Por favor, preencha com seu cargo']"
+        />
+        <q-select
+          filled
+          class="row item"
+          v-model="assunto"
+          hint="Sugestões, Currículos, Críticas..."
+          multiple
+          :options="options"
+          label="Assunto"
+        />
+      </div>
       <q-input class="message" v-model="mensagem" filled type="textarea" />
 
       <div>
@@ -76,8 +95,8 @@
 </template>
 
 <script>
-import contactService from '../scripts/Contact'
-
+import contactService from "../scripts/Contact";
+import Notifier from "../scripts/NotifyService";
 export default {
   data() {
     return {
@@ -88,14 +107,37 @@ export default {
       empresa: null,
       cargo: null,
       endereco: null,
-      assunto: null,
+      assunto: [],
       mensagem: null,
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
+      notifier: new Notifier(),
+      options: [],
       contactService: new contactService()
     };
   },
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      if (this.email !== this.confirmacao_email) {
+        this.notifier.info("Os emails devem coincidir");
+      } else {
+        let telefonePayload = this.telefone.replace("(", "");
+        telefonePayload = telefonePayload.replace(")", "");
+        telefonePayload = telefonePayload.replace("-", "");
+        telefonePayload = telefonePayload.replace(/\s/g, '');
+        const payload = {
+          nome: this.nome,
+          email: this.email,
+          telefone: telefonePayload,
+          nomeEmpresa: this.empresa,
+          cargo: this.cargo,
+          endereco: this.endereco,
+          mensagem: this.mensagem,
+          listaAssuntos: this.assunto
+        };
+
+        console.log("enviando", payload);
+        this.contactService.send(payload);
+      }
+    },
     onReset() {
       this.nome = null;
       this.email = null;
@@ -108,10 +150,17 @@ export default {
       this.mensagem = null;
     }
   },
-  mounted(){
-      this.contactService.getAssuntos(res=>{
-          console.log('mamão com açucar', res)
-      })
+  mounted() {
+    this.contactService.getAssuntos().then(res => {
+      res.forEach(el => {
+        const op = {
+          value: el.id,
+          label: el.descricao,
+          assunto: el
+        };
+        this.options.push(op);
+      });
+    });
   }
 };
 </script>
