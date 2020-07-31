@@ -106,6 +106,21 @@
     height: 14vh;
 }
 
+.item{
+    width: 325px;
+}
+
+.message{
+    width: 50vw;
+}
+
+.item-container {
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+}
+
+
 .footer {}
 
 .thirdy-view-title-content {

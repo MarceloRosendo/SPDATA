@@ -5,7 +5,7 @@
     </div>
 
     <div class="contact">
-      <q-btn icon="local_phone" color="primary" text-color="white" round></q-btn>
+      <q-btn @click="contact()" icon="local_phone" color="primary" text-color="white" round></q-btn>
     </div>
 
     <div class="content">
@@ -209,7 +209,6 @@ window.onscroll = function() {
 function scrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     document.getElementById("header").classList.add('header-colapsed')
-    
     document.getElementById("links-header").style.display = "none";
   } else {
     document.getElementById("links-header").style.display = "flex";
@@ -262,6 +261,9 @@ export default {
         return 6;
       }
       return 9;
+    },
+    contact(){
+      this.$router.push("/contato");
     }
   }
 };

@@ -1,10 +1,13 @@
-
+import menu from 'layouts/MainLayout.vue'
+import index from 'pages/Index.vue'
+import contact from 'pages/Contact.vue'
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: menu,
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', component: index },
+      { path: '/contato', component: contact }
     ]
   }
 ]
