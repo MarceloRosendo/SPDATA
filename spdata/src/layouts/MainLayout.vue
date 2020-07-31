@@ -5,8 +5,7 @@
         <div id="logo" class="logo-2-basis">
           <img src="~assets/logo2.png" alt="logotipo spdata" />
         </div>
-
-        <q-list class="links-header">
+        <q-list id="links-header" class="links-header">
           <q-item class="link-header" clickable @click="redirect('Home')">Home</q-item>
           <q-item class="link-header" clickable @click="redirect('Empresa')">Empresa</q-item>
           <q-item class="link-header" clickable @click="redirect('Solucoes')">Soluções</q-item>

@@ -25,6 +25,14 @@
     align-items: flex-end;
 }
 
+.fourty-view-card-2 {
+    margin-top: 10vh;
+}
+
+.fourty-view-cards {
+    margin-top: 8vh;
+}
+
 .contact {
     position: absolute;
     right: 0;
@@ -68,10 +76,53 @@
 }
 
 .thirdy-view {
-    padding: 0px 22vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.carousel-card {}
+.thirdy-view-title {
+    font-size: 3vw;
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0px;
+    align-items: center;
+    color: #f6f8f7;
+    background: #04b9b5;
+    border-bottom-left-radius: 1vw;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    padding: 3vh;
+}
+
+.header {
+    transition: 2s;
+}
+
+.header-colapsed {
+    width: 20vw;
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    height: 14vh;
+}
+
+.footer {}
+
+.thirdy-view-title-content {
+    width: max-content;
+    font-family: 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.thirdy-view-content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carousel-container {
+    padding: 0px 22vw;
+}
 
 /* override */
 .fit {
@@ -80,4 +131,10 @@
 
 .footer {
     background: #164071;
+}
+
+.fourty-view-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
