@@ -1,5 +1,6 @@
 package br.com.spdata.integracao.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Assunto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
+	@Column(name = "descricao", nullable = false)
 	private String descricao;
 	private String ativo;
 	
@@ -22,6 +24,7 @@ public class Assunto {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
