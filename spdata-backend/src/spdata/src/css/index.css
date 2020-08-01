@@ -106,11 +106,11 @@
     height: 14vh;
 }
 
-.item{
+.item {
     width: 325px;
 }
 
-.message{
+.message {
     width: 50vw;
 }
 
@@ -120,8 +120,6 @@
     width: 50vw;
 }
 
-
-.footer {}
 
 .thirdy-view-title-content {
     width: max-content;
@@ -146,7 +144,29 @@
 
 .footer {
     background: #164071;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #f6f8f7;
+    border-bottom-left-radius: 1vw;
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+    padding: 2vh 4vw;
+    margin-top: 4vh;
 }
+
+.footer-btn-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.footer-icon{
+    margin-top: 8px;
+}
+
+.footer-col-1 {}
 
 .fourty-view-cards {
     display: flex;
