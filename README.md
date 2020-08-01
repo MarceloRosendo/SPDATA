@@ -1,22 +1,12 @@
-# spdata (spdata)
+﻿# Dev Challenge
 
-Site institucional da empresa SPDATA
+## TMJ Coding
+Espero que gostem. 
+### Desenvolvimento
+Para executar a landing page desenvolvida siga os seguintes passos:
 
-## Install the dependencies
-```bash
-yarn
-```
+ 1. Inicie o spring na sua ide favorita (na porta 8080)
+ 2. Vá até o diretório src/spdata
+ 3. Abra esse diretório no terminal
+ 4. execute o comando *quasar dev*
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).

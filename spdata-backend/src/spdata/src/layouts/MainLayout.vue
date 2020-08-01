@@ -7,15 +7,15 @@
         </div>
 
         <q-list :v-if="!mobile()" id="links-header" class="links-header">
-          <q-item class="link-header" clickable @click="redirect('Home')">Home</q-item>
-          <q-item class="link-header" clickable @click="redirect('Empresa')">Empresa</q-item>
-          <q-item class="link-header" clickable @click="redirect('Solucoes')">Soluções</q-item>
-          <q-item class="link-header" clickable @click="redirect('Modulos')">Módulos</q-item>
-          <q-item class="link-header" clickable @click="redirect('Servicos')">Serviços</q-item>
-          <q-item class="link-header" clickable @click="redirect('Cursos')">Cursos</q-item>
-          <q-item class="link-header" clickable @click="redirect('Portarias')">Portarias</q-item>
-          <q-item class="link-header" clickable @click="redirect('Blog')">Blog</q-item>
-          <q-item class="link-header" clickable @click="redirect('Contato')">Contato</q-item>
+          <q-item class="link-header" clickable @click="redirect('/')">Home</q-item>
+          <q-item class="link-header" clickable>Empresa</q-item>
+          <q-item class="link-header" clickable>Soluções</q-item>
+          <q-item class="link-header" clickable>Módulos</q-item>
+          <q-item class="link-header" clickable>Serviços</q-item>
+          <q-item class="link-header" clickable>Cursos</q-item>
+          <q-item class="link-header" clickable>Portarias</q-item>
+          <q-item class="link-header" clickable>Blog</q-item>
+          <q-item class="link-header" clickable>Contato</q-item>
         </q-list>
         <!-- <q-btn
           :v-if="mobile()"
@@ -74,7 +74,9 @@ export default {
     };
   },
   methods: {
-    redirect(page) {},
+    redirect(page) {
+      this.$router.push(page);
+    },
     mobile() {
       if (window.innerWidth <= 425) {
         return true;
