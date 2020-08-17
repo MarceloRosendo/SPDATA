@@ -208,15 +208,73 @@
           </q-card>
         </div>
       </div>
-      <div class="footer">
-        <div class="footer-col-1">Redes sociais
-          <div class="footer-btn-container">
-            <q-btn href="https://www.facebook.com/Comunidade.SPDATA" color="white" class="footer-icon" icon="img:https://image.flaticon.com/icons/svg/59/59439.svg" round/>
-            <q-btn color="white" class="footer-icon" icon="img:https://image.flaticon.com/icons/svg/2111/2111532.svg" round/>
-            <q-btn color="white" class="footer-icon" icon="img:https://image.flaticon.com/icons/svg/733/733635.svg" round/>
+      <div class="footer flex">
+        <div class="social-midia text-bold">
+          <div class="social-midia-title">
+            Redes sociais
+          </div>
+          <div class="social-midia-content">
+            <div class="social-midia-content-wrap">
+              <q-btn href="https://www.facebook.com/Comunidade.SPDATA" color="white" class="footer-icon" icon="img:https://image.flaticon.com/icons/svg/59/59439.svg" round/>
+              <q-btn color="white" class="footer-icon" icon="img:https://image.flaticon.com/icons/svg/2111/2111532.svg" round/>
+              <q-btn color="white" class="footer-icon" icon="img:https://image.flaticon.com/icons/svg/733/733635.svg" round/>
+            </div>
           </div>
         </div>
-        <div class="footer-col-1">Informações</div>
+        <div class="col text-bold footer-el">Contato
+          <div class="col">
+            <q-list dense bordered padding class="rounded-borders">
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon color="white" name="local_phone" />
+              </q-item-section>
+              <q-item-section>
+                (31) 3399-2500
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon color="white" name="local_phone" />
+              </q-item-section>
+              <q-item-section>
+                (31) 9 9382-5500
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon color="white" name="email" />
+              </q-item-section>
+              <q-item-section>
+                comercial@spdata.com.br
+              </q-item-section>
+            </q-item>
+          </q-list>
+          </div>
+        </div>
+        <div class="col text-bold">
+          Geral
+          <div class="col">
+          <q-list dense bordered padding class="rounded-borders">
+            <q-item clickable v-ripple>
+              <q-item-section>
+                Portal do cliente
+              </q-item-section>
+            </q-item>
+            <q-item clickable v-ripple>
+              <q-item-section>
+                Portal do colaborador
+              </q-item-section>
+            </q-item>
+            <q-item clickable v-ripple>
+              <q-item-section>
+                Trabalhe conosco
+              </q-item-section>
+            </q-item>
+          </q-list>
+          </div>
+        </div>
       </div>
     </div>
   </q-page>

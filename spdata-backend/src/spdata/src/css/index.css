@@ -164,12 +164,25 @@
 
 .footer-icon{
     margin-top: 8px;
+    margin-right: 8px;
 }
-
-.footer-col-1 {}
 
 .fourty-view-cards {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.social-midia{
+    height: 100%;
+    align-self: self-end;
+    margin-right: 20vw;
+}
+
+.footer-el{
+    margin: 0px 16px 0px 0px;
+}
+
+.social-midia-content-wrap{
+    padding:1vw 0px
 }
